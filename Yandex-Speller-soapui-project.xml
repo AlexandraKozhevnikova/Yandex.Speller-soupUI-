@@ -213,24 +213,44 @@ https://yandex.ru/dev/speller/doc/dg/reference/checkText-docpage/</con:descripti
                <word>зецвіла</word>
                <s>зацвіла</s>
             </error>
-         </SpellResult>]]></token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="properties" name="DDT" id="e86b88a7-b87a-4a1f-ae76-efc711d4dc10"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>counter</con:name><con:value>10</con:value></con:property></con:properties></con:config></con:testStep><con:testStep type="groovy" name="Перебор проперти" id="15191112-f146-412f-8c2f-45579f34e973"><con:settings/><con:config><script>//def proprt = testRunner.testCase.testSteps["DDT"].getPropertyValue("spel:text")
-//def set = proprt.parse(' ', proprt)
-
-("веноград", "моссаж", "пОлучилось", "рассссклеивание", "кампазиция", "titli", "stup", "reven", "niill", "была была").each { 
-
-
-}
-
-log.info proprt
-log.info set
-	</script></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="2640dc24-463d-453f-99b5-5b0052423fff"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/></con:testStep><con:testStep type="request" name="SOAP Request" id="7d1f77f1-ca02-4fbe-a969-00c1712e1628" disabled="true"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpellServiceSoap12</con:interface><con:operation>checkText</con:operation><con:request name="SOAP Request" id="110c66c3-c3e4-4efc-b358-878b511842c5"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://speller.yandex.net/services/spellservice</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:spel="http://speller.yandex.net/services/spellservice">\r
+         </SpellResult>]]></token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="properties" name="DDT" id="e86b88a7-b87a-4a1f-ae76-efc711d4dc10"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>counter</con:name><con:value>0</con:value></con:property><con:property><con:name>value</con:name><con:value>веноград</con:value></con:property></con:properties></con:config></con:testStep><con:testStep type="request" name="DDTRequest" id="7d1f77f1-ca02-4fbe-a969-00c1712e1628"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpellServiceSoap12</con:interface><con:operation>checkText</con:operation><con:request name="DDTRequest" id="110c66c3-c3e4-4efc-b358-878b511842c5"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://speller.yandex.net/services/spellservice</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:spel="http://speller.yandex.net/services/spellservice">\r
    <soap:Header/>\r
    <soap:Body>\r
       <spel:CheckTextRequest>\r
-         <spel:text>?</spel:text>\r
+         <spel:text>${DDT#value}</spel:text>\r
       </spel:CheckTextRequest>\r
    </soap:Body>\r
-</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="a0f75016-ed08-45a2-b969-b69d633c0bd5"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:setupScript>log.info"Тест начался"
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="a0f75016-ed08-45a2-b969-b69d633c0bd5"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="groovy" name="Перебор проперти" id="15191112-f146-412f-8c2f-45579f34e973"><con:settings/><con:config><script>//def proprt = testRunner.testCase.testSteps["DDT"].getPropertyValue("spel:text")
+//def set = proprt.parse(' ', proprt)
+
+//("веноград", "моссаж", "пОлучилось", "рассссклеивание", "кампазиция", "titli", "stup", "reven", "niill", "была была").each { 
+//
+//
+//}
+//
+//log.info proprt
+//log.info set
+//log.info context.getCurrentStep().getLabel()
+
+
+def input = ["веноград", "моссаж", "пОлучилось", "рассссклеивание", "кампазиция", "titli", "stup", "reven", "niill", "была была"]
+def output
+
+int counter
+counter = testRunner.testCase.testSteps["DDT"].getPropertyValue("counter").asType(int)
+
+
+while (counter>0) {
+	counter = counter - 1
+	testRunner.testCase.testSteps["DDT"].setPropertyValue("counter", counter.asType(String))
+	testRunner.testCase.testSteps["DDT"].setPropertyValue("value", input[counter])
+	testRunner.testCase.testSteps['DDTRequest'].run(testRunner,context)
+
+	// testRunner.gotoStepByName("DDTRequest").run
+	
+	
+}
+	</script></con:config></con:testStep><con:setupScript>log.info"Тест начался"
 testRunner.testCase.setPropertyValue("TheWords", "распазнавание образцовв")
 testRunner.testCase.testSteps["DDT"].setPropertyValue("counter", "10")
 
